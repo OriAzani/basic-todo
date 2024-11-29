@@ -1,7 +1,7 @@
 import React from "react";
 import { TodoPreview } from "../todoPreview/todoPreview";
 
-export const TodoList = ({ todos, deleteTodo }) => {
+export const TodoList = ({ todos, deleteTodo, toggleIsDone }) => {
   const handleDeleteTodo = (id) => {
     deleteTodo(id);
   };
@@ -11,6 +11,7 @@ export const TodoList = ({ todos, deleteTodo }) => {
       <TodoPreview
         todo={todo}
         handleDeleteTodo={handleDeleteTodo}
+        handleToggleIsDone={toggleIsDone}
         key={todo.id}
       ></TodoPreview>
     );

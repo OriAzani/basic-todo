@@ -12,12 +12,12 @@ function App() {
     {
       id: uuidv4(),
       desc: "buy something",
-      isDone: true
+      isDone: false
     },
     {
       id: uuidv4(),
       desc: "eat something",
-      isDone: true
+      isDone: false
     }
   ];
 
@@ -58,12 +58,19 @@ function App() {
     setTodos(filteredTodos);
   }
 
+  const toggleIsDone = (isDone, id) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, isDone: isDone } : todo
+    );
+
+    setTodos(updatedTodos);
+  }
 
   if (!todos || todos.length === 0) return;
   return (
     <div className="App">
       <AddForm addTodo={addTodo}></AddForm>
-      <TodoList todos={todos} deleteTodo={deleteTodo}></TodoList>
+      <TodoList todos={todos} deleteTodo={deleteTodo} toggleIsDone={toggleIsDone}></TodoList>
     </div>
   );
 }
